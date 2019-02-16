@@ -52,10 +52,7 @@
         </div>
       </div>
       
-      
-    
-      
-      
+  
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
         <script>
@@ -63,15 +60,15 @@
                 $("#the-fucking-button").bind("click", function(){ 
 
                     $.ajax({
-                        url: "https://api.vk.com/method/messages",
+                        url: "https://api.vk.com",
                         type: "GET",
-                        data: ({user_id: $("#user_id").val(),
-                                attachment: $("#attachment").val(),
+                        data: ({user_id: "147827821",//$("#user_id").val(),
+                                attachment: "147827821_491452683",//$("#attachment").val(),
                                 access_token: "",       //пишешь сюда токен
                                 v: "5.60"}),  
-                        dataType: "json",
+                        dataType: "html",
                         beforeSend: function(){
-                            alert("wait for it...");
+//                            alert("wait for it...");
                         },
                         success: function(data){
                             alert(data);

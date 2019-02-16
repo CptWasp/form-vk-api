@@ -1,0 +1,73 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>        
+       
+        
+        
+        <button id="load">btn</button>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script type="text/javascript">
+        
+        
+        
+        $(document).ready(function(){
+            
+            $("#load").on("click", loadFriends);
+            
+            
+            
+            
+//            #####################################################################
+            function getURL(method, params){
+                if (!method) throw new Error("Радик, не указали метод");
+                params = params || {};
+                params['access_token'] = '';
+                
+                return 'https://api.vk.com/method/'+ method +'?' + $.param(params);
+            }
+            
+//            #####################################################################
+            function sendRequest(method, params, func){
+                    $.ajax({
+                    url: getURL(method, params),
+                    method: "GET",
+                    dataType: "JSONP",
+                    success: func
+                });
+            }
+//            #####################################################################
+            
+            function loadFriends(){
+                sendRequest('friends.search', {count: 60, fields: 'photo_100'}, function(data){console.log(data)});
+            }
+            
+            
+            
+            
+            });
+    </script>
+        
+        
+        
+    </body>
+</html>
