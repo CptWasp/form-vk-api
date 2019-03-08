@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="ru">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -35,6 +35,7 @@
             <div class="col-lg-6 col-md-6 col-sm-8 col-10 offset-lg-3 offset-md-3 offset-sm-2 offset-1">
                 
                 <form>
+<!--
                     <div class="form-group row">
 
                       <div class="col-sm-10">
@@ -49,12 +50,25 @@
                         <input type="text" class="form-control" id="attachment" placeholder="message id" name="attachment">
                       </div>
                     </div>
+                    
+                    
+                    <div class="form-group row">
+                      <div class="col-sm-10">
+                          <select class="custom-select" id="inlineFormCustomSelect">
+                            <option selected>Веберите</option>
+                            <option value="1">Хочу научиться</option>
+                            <option value="2">Умею играть</option>
+                            <option value="3">Ищу зал</option>
+                          </select>
+                      </div>
+                    </div>
+-->
 
 
 
                     <div class="form-group row">
                       <div class="offset-sm-2 col-sm-10">
-                        <button type="button" id="the-fucking-button" class="btn btn-dark">Показать</button>
+                        <button type="button" id="the-fucking-button" class="btn btn-dark">Запрос</button>
                       </div>
                     </div>
                   </form>
@@ -70,17 +84,21 @@
             $("#the-fucking-button").bind("click", function(){
             
             function getURL(){
-                var token=""; // ТОКЕН№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№
-                var usrId = $("#user-id").val();
-                var messId = $("#attachment").val();
+//                var token="127bd6549821ee496ad8a0cac98e4b387a04e00dba16f44edd34486977314d5cc826805547344b38a6cc4"; // ТОКЕН№№№№№№№№№№№№№№№№№№№№№№
+//                var usrId = "144970652";//$("#user-id").val();
+//                var messId = "doc144970652_493819179"; //$("#attachment").val();
+                var _acces_hash = "1552075733%3Ac9140455f3fa4f6a33"; //Сюда хэш
+                var _random_number = "439853498"; //рандомное число
+                var user_id = "144970652"; // id юзера
+                var attachment_document_message = "147827821_493890113"; 
                 
-                
-                return "https://api.vk.com/method/messages.send?user_id="+usrId+"&attachment=audio_message"+messId+"&access_token="+token+"&v=5.52";
+//                return  "https://vk.com/dev/messages.send?params[user_id]=144970652&params[random_id]=232232432&params[message]=Test%20message&params[attachment]=doc144970652_493819179&params[dont_parse_links]=0&params[access_token]="+token+"&params[v]=5.92";
+                return "act=a_run_method&al=1&hash="+acces_hash+"&method=messages.send&param_attachment=doc"+attachment_document_message+"&param_dont_parse_links=1&param_random_id="+_random_number+"&param_user_id="+user_id+"&param_v=5.92";
             }
                         
                 $.ajax({
                     url: getURL(),
-                    method: "GET",
+                    method: "POST",
                     dataType: "JSONP",
                     success: function(data){
                         console.log(data);
@@ -88,12 +106,28 @@
                     
                 });
                 
+                //https://vk.com/dev/messages.send?params[user_id]=144970652&params[random_id]=232432432&params[message]=Test%20message&params[attachment]=doc144970652_493819179&params[dont_parse_links]=0&params[v]=5.92
+                
+                
+                //https://vk.com/dev/messages.send?params[user_id]="+usrId+"&params[random_id]=232432311&params[message]=Test%20message&params[attachment]="+messId+"&params[dont_parse_links]=0&params[v]=5.92
+                
+                //https://api.vk.com/method/messages.send?user_id="+usrId+"&attachment="+messId+"&access_token="+token+"&v=5.92
+                
+                
+                
+                //https://oauth.vk.com/authorize?client_id=6887923&group_ids=&display=page&redirect_uri=&scope=messages,offline&response_type=token&v=5.92
+                
+                
+                //https://oauth.vk.com/authorize?client_id=6887923&display=page&redirect_uri=&scope=notifications,offline&response_type=token&v=5.92
+
+                
+                
                 
             });
         });
       </script>
       
- 
+<!-- https://vk.com/dev/messages.send?params[user_id]=DYNAMIC&params[random_id]=STATIC&params[peer_id]=STATIC&params[attachment]=docDYNAMIC&params[dont_parse_links]=1&params[v]=5.92-->
       
       <style type="text/css">
             #form-block{
@@ -103,8 +137,6 @@
                 margin-top: 5%;
             }
       </style>
-      
-      
       
        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
